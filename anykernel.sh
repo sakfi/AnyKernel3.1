@@ -1,20 +1,23 @@
 ### AnyKernel3 Ramdisk Mod Script
 ## osm0sis @ xda-developers
 
-### AnyKernel setup
+# AnyKernel setup
 # global properties
 properties() { '
 kernel.string=Wild Kernels by TheWildJames aka Morgan Weedman
+# Set do.devicecheck=1 to enable device validation. Requires device.nameX configs below.
 do.devicecheck=0
 do.modules=0
 do.systemless=0
 do.cleanup=1
-do.cleanuponabort=0
+do.cleanuponabort=1
+# Add supported device codenames here when do.devicecheck=1 (e.g. device.name1=OnePlus12)
 device.name1=
 device.name2=
 device.name3=
 device.name4=
 device.name5=
+# Add OS ranges when strict checking is needed (e.g. supported.versions=11.0.0-14.0.0)
 supported.versions=
 supported.patchlevels=
 supported.vendorpatchlevels=
@@ -32,16 +35,32 @@ no_magisk_check=1
 # import functions/variables and setup patching - see for reference (DO NOT REMOVE)
 . tools/ak3-core.sh
 
-kernel_version=$(cat /proc/version | awk -F '-' '{print $1}' | awk '{print $3}')
-case $kernel_version in
-    5.1*) ksu_supported=true ;;
-    6.1*) ksu_supported=true ;;
-    6.6*) ksu_supported=true ;;
-    *) ksu_supported=false ;;
-esac
+# --- Wild Kernels Custom GKI Compatibility Logic ---
+SUPPORTED_GKI_VERSIONS=("5.1.*" "6.1.*" "6.6.*")
 
-ui_print " " "  -> Wild Kernels Supported: $ksu_supported"
-$ksu_supported || abort "  -> Non-GKI device, abort."
+check_gki_compatibility() {
+    local current_kernel_ver=$(cat /proc/version | awk -F '-' '{print $1}' | awk '{print $3}')
+    local is_supported=false
+    
+    for supported_ver in "${SUPPORTED_GKI_VERSIONS[@]}"; do
+        # Use bash pattern matching against the wildcard string
+        if [[ "$current_kernel_ver" == $supported_ver ]]; then
+            is_supported=true
+            break
+        fi
+    done
+
+    ui_print " " "  -> Wild Kernels Supported: $is_supported"
+    
+    if [ "$is_supported" = false ]; then
+        local allowed_list="${SUPPORTED_GKI_VERSIONS[*]}"
+        abort "  -> Unsupported kernel version ($current_kernel_ver). This GKI build requires: $allowed_list. Aborting."
+    fi
+}
+
+# Run the compatibility check
+check_gki_compatibility
+
 
 # boot install
 split_boot

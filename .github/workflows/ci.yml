@@ -1,0 +1,32 @@
+name: AnyKernel3 CI Validation
+
+on:
+  push:
+    branches: [ "main", "master", "Target", "Testing" ]
+  pull_request:
+    branches: [ "main", "master", "Target" ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Ensure Shell Scripts are Executable
+      run: chmod +x scripts/validate.sh build-release.sh
+
+    - name: Run Integrity & Syntax Validation
+      run: bash scripts/validate.sh
+
+    - name: Dry Run Packaging Test
+      run: bash build-release.sh
+      
+    - name: Verify Archive Generated
+      run: |
+        if [ ! -f WildKernels-AnyKernel3-*.zip ] || [ ! -f WildKernels-AnyKernel3-*.zip.sha256 ]; then
+          echo "Error: Release artifacts missing!"
+          exit 1
+        fi
+        echo "Release architecture generated successfully."

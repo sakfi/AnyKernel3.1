@@ -1,0 +1,17 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Force bash scripts and metadata to always use LF to prevent recovery shell syntax errors
+*.sh text eol=lf
+banner text eol=lf
+META-INF/com/google/android/updater-script text eol=lf
+META-INF/com/google/android/update-binary binary
+
+# Explicitly declare binary tools
+tools/magiskboot binary
+tools/busybox binary
+tools/fec binary
+tools/httools_static binary
+tools/lptools_static binary
+tools/magiskpolicy binary
+tools/snapshotupdater_static binary
