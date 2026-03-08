@@ -1,30 +1,30 @@
-# Wild Kernels - AnyKernel3
+# SakFi OP Kernels - AnyKernel3.1
 
-This repository packages and delivers **Wild Kernels** for GKI compatible Android devices, leveraging KernelSU and SUSFS optimizations. This flashing package is built on top of [AnyKernel3 by osm0sis](https://github.com/osm0sis/AnyKernel3).
+This repository serves as the official kernel deployment package for **SakFi OP Kernels**. It is an automated, hardened flashing utility designed to deliver GKI-compatible Android kernels seamlessly.
 
-## Supported Kernels 
-This installer dynamically queries the device kernel version before flashing. The following GKI branches are currently supported:
-- **`5.1.*`**
-- **`6.1.*`**
-- **`6.6.*`**
+## Features & Highlights
+- **Universal GKI Support:** Dynamically queries and supports major GKI kernel versions before flashing (`5.1.*`, `6.1.*`, `6.6.*`), preventing incompatible cross-flashing algorithms.
+- **KernelSU Next & SUSFS Native Integration:** Built-in hooks and execution paths structured for advanced root delivery and detection-hiding metrics.
+- **Robust CI Automation:** Includes built-in GitHub Action workflows mapped to standard `scripts/validate.sh` verifications to mandate correct shell executions, syntactical accuracy, and LF line-ending hygiene across thousands of device matrices.
+- **Upstream Resilience:** Safely isolates user customizations from core `ak3-core.sh` updates, maintaining synchronization sanity with original authors.
 
-*Attempting to flash this on a non-GKI Android device will result in a safetly-aborted flash.*
+## Installation (Custom Recovery/Flasher)
+1. Download the latest release `.zip` artifact from the linked repository releases.
+2. Boot your device into your designated custom recovery (e.g., TWRP, OrangeFox) or utilize a Kernel Flasher application natively.
+3. Flash the `.zip` archive.
+   *The installer automatically handles ramdisk extraction, KernelSU injection, boot repacking, and environment cleanup!*
+4. Reboot into the updated Android System.
 
-## Installation (Custom Recovery)
-1. Download the latest release `.zip` from the Releases page.
-2. Reboot your device into your custom recovery (TWRP, OrangeFox, etc.).
-3. Flash the zip file.
-   - The installer will automatically perform a boot image ramdisk backup and inject the new kernel alongside KernelSU implementations.
-4. Reboot to System.
-
-## Development & Building
-To build a release safely:
+## Packaging & Releases
+Instead of tedious manual labor, repository maintainers can generate guaranteed release zip artifacts directly.
 ```bash
 ./build-release.sh
 ```
-This script automatically excludes testing metadata, generates the zip, and provides a SHA256 checksum suitable for release logs!
+Executes local testing suites and deterministically compiles the `WildKernels-AnyKernel3-[Version].zip` with a matching `.sha256` artifact.
 
-## Links
-- [WildKernels Telegram](https://t.me/WildKernels)
-- [WildKernels Website](https://wildkernels.dev)
-- [Wild_KSU GitHub](https://github.com/WildKernels/Wild_KSU)
+## Credits & Acknowledgements
+This repository would not exist without the dedication of the underlying developers.
+- **osm0sis**: Original creator of the expansive [AnyKernel3 backend](https://github.com/osm0sis/AnyKernel3).
+- **TheWildJames / Morgan Weedman**: Core custom [Wild Kernels packaging logic](https://github.com/TheWildJames/AnyKernel3).
+- **fatalcoder524**: OnePlus KernelSU & SUSFS workflow integrations.
+- **sidex15 and simonpunk**: Creators of the SUSFS modules modifying native filesystem hooks.
