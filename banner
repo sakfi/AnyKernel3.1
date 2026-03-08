@@ -1,18 +1,11 @@
+*****************************************
+*           SakFi OP Kernel             *
+*                                       *
+*      Powered by KSUN and SUSFS        *
+*****************************************
 
-WildKernels Telegram Channel:
-https://t.me/WildKernels
-
-WildKernels Website:
-https://wildkernels.dev
-
-Wild_KSU GitHub Repository:
-https://github.com/WildKernels/Wild_KSU
-KernelSU-Next fork focused on customization and root-hiding features!
-
-GKI_KernelSU_SUSFS GitHub Repository:
-https://github.com/WildKernels/GKI_KernelSU_SUSFS
-GKI kernels with KernelSU and SUSFS.
-
-OnePlus_KernelSU_SUSFS GitHub Repository:
-https://github.com/WildKernels/OnePlus_KernelSU_SUSFS
-OnePlus kernels with KernelSU and SUSFS.
+ Credits:
+ - AnyKernel3 by osm0sis @ xda-developers
+ - Wild Kernels by TheWildJames
+ - OnePlus KSUN & SUSFS by fatalcoder524
+ - SUSFS by sidex15 and simonpunk

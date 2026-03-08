@@ -4,7 +4,7 @@
 # AnyKernel setup
 # global properties
 properties() { '
-kernel.string=Wild Kernels by TheWildJames aka Morgan Weedman
+kernel.string=SakFi OP Kernels by sakfi
 # Set do.devicecheck=1 to enable device validation. Requires device.nameX configs below.
 do.devicecheck=0
 do.modules=0
@@ -50,7 +50,7 @@ check_gki_compatibility() {
         fi
     done
 
-    ui_print " " "  -> Wild Kernels Supported: $is_supported"
+    ui_print " " "  -> SakFi OP Kernels Supported: $is_supported"
     
     if [ "$is_supported" = false ]; then
         local allowed_list="${SUPPORTED_GKI_VERSIONS[*]}"
@@ -70,3 +70,6 @@ if [ -f "split_img/ramdisk.cpio" ]; then
 else
     flash_boot
 fi
+
+ui_print " "
+ui_print "Flashing Done! Good Luck with your new Kernel!!"
