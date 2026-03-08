@@ -35,26 +35,21 @@ no_magisk_check=1
 # import functions/variables and setup patching - see for reference (DO NOT REMOVE)
 . tools/ak3-core.sh
 
-SUPPORTED_GKI_VERSIONS="5.1.* 6.1.* 6.6.*"
-
 check_gki_compatibility() {
     local current_kernel_ver=$(cat /proc/version | awk -F '-' '{print $1}' | awk '{print $3}')
     local is_supported=false
-    
-    for supported_ver in $SUPPORTED_GKI_VERSIONS; do
-        # Use POSIX pattern matching for BusyBox/ash compatibility
-        case "$current_kernel_ver" in
-            $supported_ver)
-                is_supported=true
-                break
-                ;;
-        esac
-    done
+
+    # Use explicit POSIX pattern matching for BusyBox/ash compatibility
+    case "$current_kernel_ver" in
+        5.1.*|6.1.*|6.6.*)
+            is_supported=true
+            ;;
+    esac
 
     ui_print " " "  -> SakFi OP Kernels Supported: $is_supported"
-    
+
     if [ "$is_supported" = false ]; then
-        abort "  -> Unsupported kernel version ($current_kernel_ver). This GKI build requires: $SUPPORTED_GKI_VERSIONS. Aborting."
+        abort "  -> Unsupported kernel version ($current_kernel_ver). This GKI build requires: 5.1.*, 6.1.*, or 6.6.*. Aborting."
     fi
 }
 
