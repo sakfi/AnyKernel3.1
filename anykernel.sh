@@ -41,7 +41,7 @@ check_gki_compatibility() {
 
     # Use explicit POSIX pattern matching for BusyBox/ash compatibility
     case "$current_kernel_ver" in
-        5.1.*|6.1.*|6.6.*)
+        5.1*|6.1*|6.6*)
             is_supported=true
             ;;
     esac
@@ -49,7 +49,7 @@ check_gki_compatibility() {
     ui_print " " "  -> SakFi OP Kernels Supported: $is_supported"
 
     if [ "$is_supported" = false ]; then
-        abort "  -> Unsupported kernel version ($current_kernel_ver). This GKI build requires: 5.1.*, 6.1.*, or 6.6.*. Aborting."
+        abort "  -> Unsupported kernel version ($current_kernel_ver). This GKI build requires: 5.1*, 6.1*, or 6.6*. Aborting."
     fi
 }
 
