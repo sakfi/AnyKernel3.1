@@ -6,7 +6,7 @@ set -e
 
 # Version calculation
 DATE_STR=$(date +%Y%m%d_%H%M)
-ZIP_NAME="WildKernels-AnyKernel3-${DATE_STR}.zip"
+ZIP_NAME="SakFi-OP-AnyKernel3-${DATE_STR}.zip"
 
 echo "Building Release: $ZIP_NAME"
 
@@ -20,7 +20,7 @@ fi
 # 2. Package Creation
 # We exclude git, documentation, scripts/ and the zip itself.
 echo "Zipping contents..."
-zip -r9 "$ZIP_NAME" . -x \*.git\* \*README.md \*CHANGELOG.md \*upstream_sync_checklist.md \*.gitattributes \*scripts/\* \*build-release.sh \*.zip \*.tgz
+zip -r9 "$ZIP_NAME" . -x \*.git\* \*README.md \*CHANGELOG.md \*upstream_sync_checklist.md \*.gitattributes \*scripts/\* \*build-release.sh \*.zip \*.tgz \*temp_patches/\* \*temp_wildkernels_ak3/\*
 
 # 3. Checksum Generation
 echo "Generating SHA256 checksum..."

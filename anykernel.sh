@@ -46,7 +46,7 @@ check_gki_compatibility() {
             ;;
     esac
 
-    ui_print " " "  -> SakFi OP Kernels Supported: $is_supported"
+    ui_print " " "  -> Kernel version detected: $current_kernel_ver" "  -> SakFi OP Kernels Supported: $is_supported"
 
     if [ "$is_supported" = false ]; then
         abort "  -> Unsupported kernel version ($current_kernel_ver). This GKI build requires: 5.1*, 6.1*, or 6.6*. Aborting."
@@ -58,11 +58,14 @@ check_gki_compatibility
 
 
 # boot install
+ui_print " " "Detecting ramdisk presence..."
 split_boot
 if [ -f "split_img/ramdisk.cpio" ]; then
+    ui_print "Ramdisk found! Unpacking and injecting boot..."
     unpack_ramdisk
     write_boot
 else
+    ui_print "No ramdisk found! Flashing boot directly..."
     flash_boot
 fi
 

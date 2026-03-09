@@ -20,7 +20,7 @@ Instead of tedious manual labor, repository maintainers can generate guaranteed 
 ```bash
 ./build-release.sh
 ```
-Executes local testing suites and deterministically compiles the `WildKernels-AnyKernel3-[Version].zip` with a matching `.sha256` artifact.
+Executes local testing suites and deterministically compiles the `SakFi-OP-AnyKernel3-[Version].zip` with a matching `.sha256` artifact.
 
 ## Credits & Acknowledgements
 This repository would not exist without the dedication of the underlying developers.

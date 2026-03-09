@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes to the Wild Kernels flashing utility will be documented in this file.
+All notable changes to the SakFi OP Kernels flashing utility will be documented in this file.
 
-## [Unreleased]
+## [1.0.0] - 2026-03-08
 ### Added
 - GitHub Actions CI to strictly enforce `LF` line endings and shell script integrity.
 - Automated release generation script `build-release.sh` with sha256 checksumming capabilities.

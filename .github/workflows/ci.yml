@@ -25,7 +25,7 @@ jobs:
       
     - name: Verify Archive Generated
       run: |
-        if [ ! -f WildKernels-AnyKernel3-*.zip ] || [ ! -f WildKernels-AnyKernel3-*.zip.sha256 ]; then
+        if [ ! -f SakFi-OP-AnyKernel3-*.zip ] || [ ! -f SakFi-OP-AnyKernel3-*.zip.sha256 ]; then
           echo "Error: Release artifacts missing!"
           exit 1
         fi
