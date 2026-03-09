@@ -3,7 +3,7 @@
 This repository serves as the official kernel deployment package for **SakFi OP Kernels**. It is an automated, hardened flashing utility designed to deliver GKI-compatible Android kernels seamlessly.
 
 ## Features & Highlights
-- **Universal GKI Support:** Dynamically queries and supports major GKI kernel versions before flashing (`5.1.*`, `6.1.*`, `6.6.*`), preventing incompatible cross-flashing algorithms.
+- **Universal GKI Support:** Dynamically queries and supports major GKI kernel versions before flashing (`5.10.*`, `5.15.*`, `6.1.*`, `6.6.*`, `6.12.*`), preventing incompatible cross-flashing algorithms.
 - **KernelSU Next & SUSFS Native Integration:** Built-in hooks and execution paths structured for advanced root delivery and detection-hiding metrics.
 - **Robust CI Automation:** Includes built-in GitHub Action workflows mapped to standard `scripts/validate.sh` verifications to mandate correct shell executions, syntactical accuracy, and LF line-ending hygiene across thousands of device matrices.
 - **Upstream Resilience:** Safely isolates user customizations from core `ak3-core.sh` updates, maintaining synchronization sanity with original authors.
